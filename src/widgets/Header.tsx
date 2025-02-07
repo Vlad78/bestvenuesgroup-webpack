@@ -6,7 +6,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-black text-white px-6 py-4 flex justify-between items-center h-[92px] w-full">
+    <header className="bg-primary-tan-0 text-white px-6 py-4 flex flex-row justify-between items-center h-[92px] w-full">
       <div className="flex items-center gap-4">
         <span className="text-xl font-bold">BV</span>
         <span className="text-lg font-semibold tracking-wide">BEST VENUES</span>
