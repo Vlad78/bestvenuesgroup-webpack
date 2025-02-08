@@ -20,7 +20,7 @@ import LogoMSCI from "@/shared/assets/logos/Logo - MSCI.svg";
 
 export const MovingLogos = ({ className }: { className?: string }) => {
   return (
-    <Marquee className={className}>
+    <Marquee className={className} autoFill delay={2} pauseOnHover>
       {logos.map((Component, index) => (
         <Component
           key={index}

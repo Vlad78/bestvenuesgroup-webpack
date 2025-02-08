@@ -68,16 +68,19 @@ export default function Header({ className }: { className?: string }) {
         </Link>
       </div>
       <NavigationMenu viewportClassName={"left-[-50px] top-[20px]"}>
-        <NavigationMenuList className="hidden md:flex items-center gap-14 text-menu font-onest ">
+        <NavigationMenuList className=" hidden md:flex items-center gap-14 text-menu font-onest ">
           <NavigationMenuItem>
             <NavigationMenuTrigger>VENUE FINDING</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-black w-[220px]">
-                {venues.map((component) => (
+                {venues.map((component, i) => (
                   <ListItem
                     key={component.title}
                     title={component.title}
                     href={component.href}
+                    className={cn("hover:text-primary-tan-+1", {
+                      "border-t border-transparentWhite-30": i !== 0,
+                    })}
                   />
                 ))}
               </ul>
@@ -92,21 +95,28 @@ export default function Header({ className }: { className?: string }) {
             <NavigationMenuTrigger>WHAT WE DO</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="bg-black w-[220px]">
-                {whatWeDo.map((component) => (
+                {whatWeDo.map((component, i) => (
                   <ListItem
                     key={component.title}
                     title={component.title}
                     href={component.href}
+                    className={cn("hover:text-primary-tan-+1", {
+                      "border-t border-transparentWhite-30": i !== 0,
+                    })}
                   />
                 ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#">OUR EVENTS</NavigationMenuLink>
+            <NavigationMenuLink href="#" className="hover:text-primary-tan-+1">
+              OUR EVENTS
+            </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#">ABOUT US</NavigationMenuLink>
+            <NavigationMenuLink href="#" className="hover:text-primary-tan-+1">
+              ABOUT US
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
@@ -129,7 +139,8 @@ const ListItem: React.FC<{
       <NavigationMenuLink
         href={href}
         className={cn(
-          "flex items-center justify-center select-none space-y-1 leading-none no-underline outline-none transition-colors hover:bg-gray-10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          "flex items-center justify-center select-none space-y-1 leading-none no-underline outline-none transition-colors focus:bg-accent focus:text-accent-foreground",
+
           className
         )}
         {...props}
