@@ -21,7 +21,13 @@ import LogoZak from "@/shared/assets/logos/Logo - Zak.svg";
 
 export const MovingLogos = ({ className }: { className?: string }) => {
   return (
-    <Marquee className={cn("my-20", className)} autoFill delay={2} pauseOnHover>
+    <Marquee
+      className={cn("my-20", className)}
+      autoFill
+      delay={2}
+      pauseOnHover
+      direction="right"
+    >
       {logos.map((Component, index) => (
         <Component
           key={index}
