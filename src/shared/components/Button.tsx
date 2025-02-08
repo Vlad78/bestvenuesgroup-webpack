@@ -28,23 +28,24 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const variants = variant.split("-");
     const IconSvg = getIcon(icon);
 
-    let s =
+    let buttonStyle =
       "group font-onest flex items-center bg-white text-black uppercase hover:bg-primary-tan-0 hover:text-white";
-    const iconSize = "w-6 h-6";
+    let iconStyle = "";
 
     if (variants.includes("medium")) {
-      s += " py-3 text-buttonMd px-8";
+      buttonStyle += " py-3 text-buttonMd px-8";
+      iconStyle += " w-6 h-6 mr-2 ml-[-8px]";
+    }
+
+    if (variants.includes("small")) {
+      buttonStyle += " py-2 text-buttonSm px-4";
+      iconStyle += " w-5 h-5 mr-1 ml-[-2px]";
     }
 
     const Comp = asChild ? Slot : "button";
     return (
-      <Comp className={cn(s, className)} ref={ref} {...props}>
-        {icon && (
-          <IconSvg
-            className={cn(" mr-2 ml-[-8px]", iconSize)}
-            alt="Contact us"
-          />
-        )}
+      <Comp className={cn(buttonStyle, className)} ref={ref} {...props}>
+        {icon && <IconSvg className={cn("", iconStyle)} alt="Contact us" />}
         {title ? title : children}
       </Comp>
     );

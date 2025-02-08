@@ -1,0 +1,79 @@
+"use client";
+
+import {
+  motion,
+  useTransform,
+  useScroll as useScrollMotion,
+} from "framer-motion";
+
+import accomodation from "../shared/assets/pictures/whatWeDo/Accommodation.jpg";
+import board from "../shared/assets/pictures/whatWeDo/Board meetings.jpg";
+import charity from "../shared/assets/pictures/whatWeDo/Charity galas.jpg";
+import corporate from "../shared/assets/pictures/whatWeDo/Corporate events.jpg";
+import parties from "../shared/assets/pictures/whatWeDo/Parties.jpg";
+import venue from "../shared/assets/pictures/whatWeDo/Venue Sourcing.jpg";
+import Image from "next/image";
+import { Button } from "../shared/components/Button";
+import { useRef } from "react";
+
+const sections = [
+  { title: "VENUE SOURCING", image: venue },
+  { title: "ACCOMMODATION", image: accomodation },
+  { title: "CORPORATE EVENTS", image: corporate },
+  { title: "PARTIES", image: parties },
+  { title: "CHARITY", image: charity },
+  { title: "BOARD MEETINGS", image: board },
+];
+
+export const WhatWeDo = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScrollMotion({
+    target: targetRef,
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+
+  return (
+    <div className="flex flex-col place-items-start gap-16 w-full">
+      <div className="flex flex-col gap-6 pl-12 max-w-[55%]">
+        <h1 className="text-h1 uppercase">
+          Every successful event starts with the perfect venue
+        </h1>
+        <p className="text-subheading1 font-onest">
+          At Best Venues Group, we focus on delivering personalized venue
+          solutions and full- service event management designed to meet your
+          specific objectives
+        </p>
+      </div>
+      <div ref={targetRef} className="relative h-[300vh]">
+        <div className="sticky top-[140px] flex h-[84vh]">
+          <motion.div className="flex gap-8" style={{ x }}>
+            {sections.map((section) => (
+              <div
+                key={section.title}
+                className="group relative flex flex-col justify-end w-[528px] h-[528px] overflow-hidden"
+              >
+                <Image
+                  src={section.image}
+                  alt={section.title}
+                  fill
+                  quality={100}
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 528px, (max-width: 1200px) 528px, 528px"
+                  className="object-cover z-[-1] transition-transform duration-300 ease-in-out group-hover:scale-[1.01]"
+                />
+                <div className="flex flex-col items-start gap-6 mb-16 mx-12">
+                  <h2 className="text-h3 text-white">{section.title}</h2>
+                  <Button
+                    title="LEARN MORE"
+                    variant="small"
+                    icon="arrow-right"
+                  />
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};

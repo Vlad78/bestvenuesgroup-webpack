@@ -1,8 +1,9 @@
-import Image from "next/image";
-import Header from "../widgets/Header";
+import Header from "@/widgets/Header";
 
-import { MovingLogos } from "../features/MovingLogos";
-import { Locations } from "../features/Locations";
+import { MovingLogos } from "@/features/MovingLogos";
+import { Locations } from "@/features/Locations";
+
+import { WhatWeDo } from "@/features/WhatWeDo";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <Header className={"sticky top-0"} />
       <main className="flex flex-col items-center justify-items-center w-full mt-[48px]">
         <Wrapper>
-          <video autoPlay loop muted className="h-[738px]">
+          <video autoPlay loop muted className="h-[738px] bg-black">
             <source src="clip.mp4" type="video/mp4" />
           </video>
 
@@ -20,6 +21,12 @@ export default function Home() {
         </Wrapper>
 
         <MovingLogos />
+
+        <Wrapper>
+          <section>
+            <WhatWeDo />
+          </section>
+        </Wrapper>
       </main>
     </div>
   );
