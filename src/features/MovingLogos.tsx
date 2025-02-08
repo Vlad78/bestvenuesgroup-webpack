@@ -12,6 +12,7 @@ import LogoHarman from "@/shared/assets/logos/Logo - Harman.svg";
 // import LogoLeumi from "@/shared/assets/logos/Logo - Leumi.svg";
 import LogoMcKinsey from "@/shared/assets/logos/Logo - McKinsey & Company.svg";
 import LogoMSCI from "@/shared/assets/logos/Logo - MSCI.svg";
+import { cn } from "@/shared/lib/utils";
 // import LogoPSP from "@/shared/assets/logos/Logo - PSP.svg";
 // import LogoRosenberg from "@/shared/assets/logos/Logo - Rosenberg & Estis.svg";
 // import LogoSymphonyAi from "@/shared/assets/logos/Logo - SymphonyAI.svg";
@@ -20,12 +21,12 @@ import LogoMSCI from "@/shared/assets/logos/Logo - MSCI.svg";
 
 export const MovingLogos = ({ className }: { className?: string }) => {
   return (
-    <Marquee className={className} autoFill delay={2} pauseOnHover>
+    <Marquee className={cn("my-20", className)} autoFill delay={2} pauseOnHover>
       {logos.map((Component, index) => (
         <Component
           key={index}
           alt={`Logo ${index}`}
-          className="h-20 w-auto mx-4 my-20"
+          className="h-20 w-auto mx-4"
         />
       ))}
     </Marquee>

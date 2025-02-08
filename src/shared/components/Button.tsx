@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import ContactSVG from "@/shared/assets/icons/Type=Contact.svg";
+import ContactSVG from "@/shared/assets/icons/Contact";
 import ArrowRightSVG from "@/shared/assets/icons/Type=Arrow right.svg";
 
 import { cn } from "@/shared/lib/utils";
@@ -26,10 +26,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const variants = variant.split("-");
-
     const IconSvg = getIcon(icon);
 
-    let s = "font-onest flex items-center bg-white text-black uppercase";
+    let s =
+      "group font-onest flex items-center bg-white text-black uppercase hover:bg-primary-tan-0 hover:text-white";
     const iconSize = "w-6 h-6";
 
     if (variants.includes("medium")) {
@@ -41,7 +41,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp className={cn(s, className)} ref={ref} {...props}>
         {icon && (
           <IconSvg
-            className={cn(" mr-2 ml-[-8px] ", iconSize)}
+            className={cn(" mr-2 ml-[-8px]", iconSize)}
             alt="Contact us"
           />
         )}

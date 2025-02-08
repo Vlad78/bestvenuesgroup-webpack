@@ -78,7 +78,7 @@ export default function Header({ className }: { className?: string }) {
                     key={component.title}
                     title={component.title}
                     href={component.href}
-                    className={cn("hover:text-primary-tan-+1", {
+                    className={cn("hover:text-primary-tan-0", {
                       "border-t border-transparentWhite-30": i !== 0,
                     })}
                   />
@@ -100,7 +100,7 @@ export default function Header({ className }: { className?: string }) {
                     key={component.title}
                     title={component.title}
                     href={component.href}
-                    className={cn("hover:text-primary-tan-+1", {
+                    className={cn("hover:text-primary-tan-0", {
                       "border-t border-transparentWhite-30": i !== 0,
                     })}
                   />
@@ -109,12 +109,12 @@ export default function Header({ className }: { className?: string }) {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="hover:text-primary-tan-+1">
+            <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
               OUR EVENTS
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="hover:text-primary-tan-+1">
+            <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
               ABOUT US
             </NavigationMenuLink>
           </NavigationMenuItem>

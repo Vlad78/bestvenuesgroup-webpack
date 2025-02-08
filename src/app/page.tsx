@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen w-full">
       <Header className={"sticky top-0"} />
-      <main className="flex flex-col items-center justify-items-center w-full">
+      <main className="flex flex-col items-center justify-items-center w-full mt-[48px]">
         <Wrapper>
           <video autoPlay loop muted className="h-[738px]">
             <source src="clip.mp4" type="video/mp4" />

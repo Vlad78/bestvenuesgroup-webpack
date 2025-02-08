@@ -35,8 +35,8 @@ export const Locations = () => {
       />
       <div className="absolute inset-0 bg-black bg-opacity-25"></div>
       <div className="relative z-2 flex flex-col items-start justify-center gap-4 h-full text-white px-12 py-14">
-        <h2 className="text-h1">{location.title}</h2>
-        <p className="text-body font-onest max-w-[60%]">
+        <h2 className="text-h1 cursor-default">{location.title}</h2>
+        <p className="text-body font-onest max-w-[60%] cursor-default">
           {location.description}
         </p>
         <Button
