@@ -33,8 +33,11 @@ export const WhatWeDo = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
   return (
-    <div className="flex flex-col place-items-start gap-16 w-full">
-      <div className="flex flex-col gap-6 pl-12 max-w-[55%]">
+    <div
+      ref={targetRef}
+      className="relative flex flex-col place-items-start gap-16 w-full"
+    >
+      <div className="sticky top-[140px] flex flex-col gap-6 pl-12 max-w-[55%]">
         <h1 className="text-h1 uppercase">
           Every successful event starts with the perfect venue
         </h1>
@@ -44,13 +47,13 @@ export const WhatWeDo = () => {
           specific objectives
         </p>
       </div>
-      <div ref={targetRef} className="relative h-[300vh]">
-        <div className="sticky top-[140px] flex h-[84vh]">
+      <div className=" h-[300vh]">
+        <div className="sticky top-[528px] flex h-[0vh]">
           <motion.div className="flex gap-8" style={{ x }}>
             {sections.map((section) => (
               <div
                 key={section.title}
-                className="group relative flex flex-col justify-end w-[528px] h-[528px] overflow-hidden"
+                className="group relative flex flex-col justify-end w-[528px] h-[528px]"
               >
                 <Image
                   src={section.image}
@@ -59,10 +62,12 @@ export const WhatWeDo = () => {
                   quality={100}
                   placeholder="blur"
                   sizes="(max-width: 768px) 528px, (max-width: 1200px) 528px, 528px"
-                  className="object-cover z-[-1] transition-transform duration-300 ease-in-out group-hover:scale-[1.01]"
+                  className="object-cover z-[-1] transition-transform duration-300 ease-in-out group-hover:scale-[1.02]"
                 />
                 <div className="flex flex-col items-start gap-6 mb-16 mx-12">
-                  <h2 className="text-h3 text-white">{section.title}</h2>
+                  <h2 className="text-h3 text-white cursor-default">
+                    {section.title}
+                  </h2>
                   <Button
                     title="LEARN MORE"
                     variant="small"
