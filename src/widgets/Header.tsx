@@ -58,73 +58,75 @@ export default function Header({ className }: { className?: string }) {
   return (
     <header
       className={cn(
-        "bg-black text-white px-8 py-[22px] flex flex-row gap-14 justify-between items-center h-[92px] w-full z-10",
+        "bg-black text-white px-8 py-[22px] flex flex-row justify-center items-center h-[92px] w-full z-10",
         className
       )}
     >
-      <div className="mr-auto">
-        <Link href="#">
-          <Logo alt="Logo" width={240} height={25.7} />
-        </Link>
-      </div>
-      <NavigationMenu viewportClassName={"left-[-50px] top-[20px]"}>
-        <NavigationMenuList className=" hidden md:flex items-center gap-14 text-menu font-onest ">
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>VENUE FINDING</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="bg-black w-[220px]">
-                {venues.map((component, i) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                    className={cn("hover:text-primary-tan-0", {
-                      "border-t border-transparentWhite-30": i !== 0,
-                    })}
-                  />
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      <div className="max-w-[1312px] flex-1 flex flex-row gap-14 justify-between items-center">
+        <div className="mr-auto">
+          <Link href="#">
+            <Logo alt="Logo" width={240} height={25.7} />
+          </Link>
+        </div>
+        <NavigationMenu viewportClassName={"left-[-50px] top-[20px]"}>
+          <NavigationMenuList className=" hidden md:flex items-center gap-14 text-menu font-onest ">
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>VENUE FINDING</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="bg-black w-[220px]">
+                  {venues.map((component, i) => (
+                    <ListItem
+                      key={component.title}
+                      title={component.title}
+                      href={component.href}
+                      className={cn("hover:text-primary-tan-0", {
+                        "border-t border-transparentWhite-30": i !== 0,
+                      })}
+                    />
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
-      <NavigationMenu viewportClassName={"left-[-55px] top-[20px]"}>
-        <NavigationMenuList className="hidden md:flex items-center gap-14 text-menu font-onest ">
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>WHAT WE DO</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="bg-black w-[220px]">
-                {whatWeDo.map((component, i) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                    className={cn("hover:text-primary-tan-0", {
-                      "border-t border-transparentWhite-30": i !== 0,
-                    })}
-                  />
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
-              OUR EVENTS
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
-              ABOUT US
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <Button variant="medium" icon="contact" title="Contact us" />
+        <NavigationMenu viewportClassName={"left-[-55px] top-[20px]"}>
+          <NavigationMenuList className="hidden md:flex items-center gap-14 text-menu font-onest ">
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>WHAT WE DO</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="bg-black w-[220px]">
+                  {whatWeDo.map((component, i) => (
+                    <ListItem
+                      key={component.title}
+                      title={component.title}
+                      href={component.href}
+                      className={cn("hover:text-primary-tan-0", {
+                        "border-t border-transparentWhite-30": i !== 0,
+                      })}
+                    />
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
+                OUR EVENTS
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
+                ABOUT US
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+        <Button variant="medium" icon="contact" title="Contact us" />
 
-      {/* <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {/* <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
         <Menu size={24} />
       </button> */}
+      </div>
     </header>
   );
 }

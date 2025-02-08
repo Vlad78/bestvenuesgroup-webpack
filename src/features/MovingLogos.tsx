@@ -25,7 +25,7 @@ export const MovingLogos = ({ className }: { className?: string }) => {
       className={cn("my-20", className)}
       autoFill
       pauseOnHover
-      direction="right"
+      direction="left"
     >
       {logos.map((Component, index) => (
         <Component
