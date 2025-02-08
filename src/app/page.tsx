@@ -5,6 +5,10 @@ import { Locations } from "@/features/Locations";
 
 import { WhatWeDo } from "@/features/WhatWeDo";
 
+import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.png";
+import Image from "next/image";
+import { Button } from "../shared/components/Button";
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen w-full">
@@ -26,6 +30,7 @@ export default function Home() {
           <section>
             <WhatWeDo />
           </section>
+          <section></section>
         </Wrapper>
       </main>
     </div>
