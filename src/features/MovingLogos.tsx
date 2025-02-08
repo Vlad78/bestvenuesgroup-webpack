@@ -16,7 +16,7 @@ import { cn } from "@/shared/lib/utils";
 import LogoPSP from "@/shared/assets/logos/Logo - PSP.svg";
 import LogoRosenberg from "@/shared/assets/logos/Logo - Rosenberg & Estis.svg";
 import LogoSymphonyAi from "@/shared/assets/logos/Logo - SymphonyAI.svg";
-import LogoTheUniversityOfChicago from "@/shared/assets/logos/Logo - The university of Chicago.svg";
+// import LogoTheUniversityOfChicago from "@/shared/assets/logos/Logo - The university of Chicago.svg";
 import LogoZak from "@/shared/assets/logos/Logo - Zak.svg";
 
 export const MovingLogos = ({ className }: { className?: string }) => {
@@ -55,6 +55,6 @@ const logos = [
   LogoPSP,
   LogoRosenberg,
   LogoSymphonyAi,
-  LogoTheUniversityOfChicago,
+  // LogoTheUniversityOfChicago,
   LogoZak,
 ];
