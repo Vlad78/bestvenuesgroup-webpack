@@ -17,7 +17,7 @@ export const Testimonials = () => {
 
   return (
     <div className="w-[1352px]">
-      <div className="flex flex-col gap-8 mt-20 mb-[100px]">
+      <div className="flex flex-col gap-3 mt-20 mb-[100px]">
         <Button
           title="see more"
           variant="small"

@@ -57,7 +57,7 @@ export default function Home() {
               <h4 className="text-h4 text-white uppercase w-[60%] mr-auto select-none">
                 Subscribe to our newsletter
               </h4>
-              <div className="flex items-center w-[40%] gap-4 ">
+              <div className="flex items-center justify-end w-[40%] gap-4 ">
                 <Input
                   type="text"
                   placeholder="Your email address"
