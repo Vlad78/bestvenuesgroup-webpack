@@ -2,13 +2,14 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import ContactSVG from "@/shared/assets/icons/Contact";
 import ArrowRightSVG from "@/shared/assets/icons/Type=Arrow right.svg";
+import BellSVG from "@/shared/assets/icons/Type=Subscribe.svg";
 
 import { cn } from "@/shared/lib/utils";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: string;
   asChild?: boolean;
-  icon?: "contact" | "arrow-right";
+  icon?: "contact" | "arrow-right" | "bell";
   title?: string;
 };
 
@@ -47,9 +48,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconStyle += " w-5 h-5 mr-1 ml-[-2px]";
     }
 
-    if (variants.includes("outlined")) {
+    if (variants.includes("outlined") && variants.includes("medium")) {
       buttonStyle +=
-        " bg-transparent border-solid border-white border-[3px] text-white hover:bg-white hover:text-black";
+        " bg-transparent border-solid border-white border-[3px] py-[9px] px-[29px] text-white hover:bg-white hover:text-black";
     }
 
     const Comp = asChild ? Slot : "button";
@@ -71,6 +72,8 @@ const getIcon = (icon?: string) => {
       return ContactSVG;
     case "arrow-right":
       return ArrowRightSVG;
+    case "bell":
+      return BellSVG;
     default:
       return null;
   }

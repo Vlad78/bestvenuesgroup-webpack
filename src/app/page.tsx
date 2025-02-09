@@ -7,6 +7,8 @@ import { WhatWeDo } from "@/features/WhatWeDo";
 // import { Button } from "../shared/components/Button";
 import { Testimonials } from "../features/Testimonials";
 import { Button } from "../shared/components/Button";
+import { AboutUs } from "../features/AboutUs";
+import { Input } from "../shared/components/Input";
 
 export default function Home() {
   return (
@@ -45,6 +47,29 @@ export default function Home() {
                 icon="contact"
                 className="ml-auto"
               />
+            </div>
+          </section>
+          <section className="mt-[100px] flex gap-8 h-[480px]">
+            <AboutUs />
+          </section>
+          <section className="mt-8 mb-[100px]">
+            <div className="flex items-center gap-4 h-[144px] bg-gray-8 px-12">
+              <h4 className="text-h4 text-white uppercase w-[60%] mr-auto select-none">
+                Subscribe to our newsletter
+              </h4>
+              <div className="flex items-center w-[40%] gap-4 ">
+                <Input
+                  type="text"
+                  placeholder="Your email address"
+                  className="font-onest text-body placeholder:text-body "
+                />
+                <Button
+                  variant="medium-outlined"
+                  title="subscribe"
+                  icon="bell"
+                  className=""
+                />
+              </div>
             </div>
           </section>
         </Wrapper>
