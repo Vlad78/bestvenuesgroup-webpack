@@ -11,7 +11,7 @@ import Image from "next/image";
 
 import { ScrollBar } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 const sections = [
@@ -27,21 +27,33 @@ export const WhatWeDo = () => {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleWheel = useCallback(
-    (event: WheelEvent) => {
-      if (isHovered && scrollAreaRef.current) {
+  useLayoutEffect(() => {
+    const scrollArea = scrollAreaRef.current;
+    const handleWheel = (event: WheelEvent) => {
+      if (isHovered && scrollArea) {
         event.preventDefault();
-        scrollAreaRef.current.scrollBy({
+
+        scrollArea.scrollBy({
           left: event.deltaY * 4,
           behavior: "smooth",
         });
-      }
-    },
-    [isHovered]
-  );
 
-  useLayoutEffect(() => {
-    const scrollArea = scrollAreaRef.current;
+        if (scrollArea.scrollLeft < 30 && event.deltaY < 0) {
+          document.documentElement.scrollBy({
+            top: event.deltaY * 3,
+            behavior: "smooth",
+          });
+        }
+
+        if (scrollArea.scrollLeft > 1930 && event.deltaY > 0) {
+          document.documentElement.scrollBy({
+            top: event.deltaY * 3,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
     if (scrollArea) {
       scrollArea.addEventListener("wheel", handleWheel, { passive: false });
     }
@@ -51,24 +63,26 @@ export const WhatWeDo = () => {
         scrollArea.removeEventListener("wheel", handleWheel);
       }
     };
-  }, [isHovered, handleWheel]);
+  }, [isHovered]);
 
   return (
     <>
-      <div className="flex flex-col gap-6 max-w-[50%] my-16">
-        <h1 className="text-h1 uppercase">
+      <div className="flex flex-col gap-6 max-w-[60%] my-16">
+        <h1 className="text-h1 uppercase text-balance">
           Every successful event starts with the perfect venue
         </h1>
-        <p className="text-subheading1 font-onest">
-          At Best Venues Group, we focus on delivering personalized venue
-          solutions and full- service event management designed to meet your
-          specific objectives
+        <p className="text-subheading1 font-onest text-balance">
+          At Best Venues Group, we focus on delivering personalized
+          <br />
+          venue solutions and full-service event management designed to meet
+          your specific objectives.
         </p>
       </div>
       <ScrollArea
         className="overflow-hidden"
         ref={scrollAreaRef}
         onMouseEnter={() => setIsHovered(true)}
+        // onMouseOver={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="flex w-max space-x-4 ">
@@ -88,7 +102,7 @@ export const WhatWeDo = () => {
               />
 
               <div className="flex flex-col items-start gap-6 mb-16 mx-12">
-                <h2 className="text-h3 text-white cursor-default">
+                <h2 className="text-h3 text-white cursor-default text-balance">
                   {section.title}
                 </h2>
                 <Button title="LEARN MORE" variant="small" icon="arrow-right" />

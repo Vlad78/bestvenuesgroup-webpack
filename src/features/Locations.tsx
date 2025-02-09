@@ -30,12 +30,14 @@ export const Locations = () => {
         quality={100}
         placeholder="blur"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-black bg-opacity-25"></div>
       <div className="relative z-2 flex flex-col items-start justify-center gap-4 h-full text-white px-12 py-14">
-        <h2 className="text-h1 cursor-default uppercase">{location.title}</h2>
-        <p className="text-body font-onest max-w-[60%] cursor-default">
+        <h2 className="text-h1 cursor-default uppercase text-balance">
+          {location.title}
+        </h2>
+        <p className="text-body font-onest max-w-[65%] cursor-default text-balance">
           {location.description}
         </p>
         <Button

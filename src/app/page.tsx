@@ -38,7 +38,7 @@ export default function Home() {
         <Wrapper>
           <section>
             <div className="flex items-center h-[196px] bg-primary-tan-0 px-12 py-[54px]">
-              <h3 className="w-[60%] text-h3 uppercase select-none text-white">
+              <h3 className="w-[55%] text-h3 uppercase select-none text-white ">
                 Ready to learn how we can make your event exceptional?
               </h3>
               <Button
