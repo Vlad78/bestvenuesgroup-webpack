@@ -6,6 +6,7 @@ import { Locations } from "@/features/Locations";
 import { WhatWeDo } from "@/features/WhatWeDo";
 // import { Button } from "../shared/components/Button";
 import { Testimonials } from "../features/Testimonials";
+import { Button } from "../shared/components/Button";
 
 export default function Home() {
   return (
@@ -32,6 +33,21 @@ export default function Home() {
         <section>
           <Testimonials />
         </section>
+        <Wrapper>
+          <section>
+            <div className="flex items-center h-[196px] bg-primary-tan-0 px-12 py-[54px]">
+              <h3 className="w-[60%] text-h3 uppercase select-none text-white">
+                Ready to learn how we can make your event exceptional?
+              </h3>
+              <Button
+                variant="large-outlined"
+                title="contact us"
+                icon="contact"
+                className="ml-auto"
+              />
+            </div>
+          </section>
+        </Wrapper>
       </main>
     </div>
   );

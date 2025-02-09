@@ -32,6 +32,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "group font-onest flex items-center bg-white text-black uppercase hover:bg-primary-tan-0 hover:text-white";
     let iconStyle = "";
 
+    if (variants.includes("large")) {
+      buttonStyle += " py-[13px] text-buttonLg px-[45px]";
+      iconStyle += " w-9 h-9 mr-2 ml-[-8px]";
+    }
+
     if (variants.includes("medium")) {
       buttonStyle += " py-3 text-buttonMd px-8";
       iconStyle += " w-6 h-6 mr-2 ml-[-8px]";
@@ -40,6 +45,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     if (variants.includes("small")) {
       buttonStyle += " py-2 text-buttonSm px-4";
       iconStyle += " w-5 h-5 mr-1 ml-[-2px]";
+    }
+
+    if (variants.includes("outlined")) {
+      buttonStyle +=
+        " bg-transparent border-solid border-white border-[3px] text-white hover:bg-white hover:text-black";
     }
 
     const Comp = asChild ? Slot : "button";
