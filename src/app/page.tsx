@@ -4,10 +4,8 @@ import { MovingLogos } from "@/features/MovingLogos";
 import { Locations } from "@/features/Locations";
 
 import { WhatWeDo } from "@/features/WhatWeDo";
-
-import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.png";
-import Image from "next/image";
-import { Button } from "../shared/components/Button";
+// import { Button } from "../shared/components/Button";
+import { Testimonials } from "../features/Testimonials";
 
 export default function Home() {
   return (
@@ -30,8 +28,10 @@ export default function Home() {
           <section>
             <WhatWeDo />
           </section>
-          <section></section>
         </Wrapper>
+        <section>
+          <Testimonials />
+        </section>
       </main>
     </div>
   );

@@ -81,7 +81,7 @@ export const WhatWeDo = () => {
           </div>
         </div>
       </div>
-      <div className="group flex relative h-[650px] overflow-hidden mt-[560px] px-12 py-18 mb-20">
+      <div className="group flex relative h-[650px] overflow-hidden mt-[560px] px-12 py-18">
         <Image
           src={retreatsVilaVitaparc}
           fill
@@ -93,7 +93,7 @@ export const WhatWeDo = () => {
         />
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>
         <div className="relative z-2 flex-1 flex flex-col items-end justify-center gap-4 text-white mt-[246px] mb-[72px]">
-          <h2 className="text-h1 cursor-default uppercase">
+          <h2 className="text-h1 cursor-default uppercase ">
             Corporate retreats
           </h2>
           <p className="text-subheading2 font-onest max-w-[40%] cursor-default text-end">
