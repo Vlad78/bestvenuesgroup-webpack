@@ -4,6 +4,7 @@ import { Button } from "@/shared/components/Button";
 
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback } from "react";
+import { motion } from "framer-motion";
 
 export const Testimonials = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -29,14 +30,25 @@ export const Testimonials = () => {
           <div className="flex -ml-10">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="flex-shrink-0 w-1/3 pl-10">
-                <div className="h-[540px] flex flex-col items-start justify-between p-12 pb-14 shadow-[0px_0px_20px_2px_rgba(0,0,0,0.08)] transition-shadow duration-300 ease-in-out hover:shadow-[0px_0px_20px_2px_rgba(0,0,0,0.11)]">
+                <motion.div
+                  className="h-[540px] flex flex-col items-start justify-between p-12 pb-14 shadow-[0px_0px_20px_2px_rgba(0,0,0,0.05)]"
+                  initial={{ boxShadow: "0px 0px 0px 0px rgba(0,0,0,0.05)" }}
+                  whileInView={{
+                    boxShadow: "0px 0px 20px 2px rgba(0,0,0,0.08)",
+                  }}
+                  transition={{ type: "spring", duration: 4 }}
+                  whileHover={{
+                    boxShadow: "0px 0px 20px 2px rgba(0,0,0,0.14)",
+                    transition: { type: "spring", duration: 0.5 },
+                  }}
+                >
                   <p className="text-body font-onest cursor-default select-none">
                     {testimonial.comment}
                   </p>
                   <h5 className="text-h5 uppercase cursor-default select-none">
                     {testimonial.name}
                   </h5>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>

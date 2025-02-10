@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import ChevronDown from "@/shared/assets/icons/play_arrow_filled.svg";
+import { motion, MotionProps } from "framer-motion";
 
 import { cn } from "@/shared/lib/utils";
 
@@ -43,8 +44,10 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger> & {
+    motionProps?: MotionProps;
+  }
+>(({ className, children, motionProps, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
     className={cn(
@@ -53,11 +56,13 @@ const NavigationMenuTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children}{" "}
-    <ChevronDown
-      className="relative top-[1px] ml-1 h-[18px] w-[18px] transition duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:stroke-primary-tan-0 "
-      aria-hidden="true"
-    />
+    <motion.div {...motionProps} className="flex">
+      {children}{" "}
+      <ChevronDown
+        className="relative top-[1px] ml-1 h-[18px] w-[18px] transition duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:stroke-primary-tan-0 "
+        aria-hidden="true"
+      />
+    </motion.div>
   </NavigationMenuPrimitive.Trigger>
 ));
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;

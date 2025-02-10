@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "@/shared/assets/Logo.svg";
 import Link from "next/link";
 import { Button } from "@/shared/components/Button";
@@ -11,6 +13,7 @@ import {
 } from "@/shared/components/NavigationMenu";
 import { cn } from "@/shared/lib/utils";
 import React from "react";
+import { motion, MotionProps } from "framer-motion";
 
 const venues: { title: string; href: string }[] = [
   {
@@ -54,6 +57,13 @@ const whatWeDo: { title: string; href: string }[] = [
   },
 ];
 
+const animationPopUp = (customValue: number): MotionProps => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  transition: { delay: customValue * 0.08, duration: 0.2 },
+  viewport: { once: true },
+});
+
 export default function Header({ className }: { className?: string }) {
   return (
     <header
@@ -68,10 +78,13 @@ export default function Header({ className }: { className?: string }) {
             <Logo alt="Logo" width={240} height={25.7} />
           </Link>
         </div>
+
         <NavigationMenu viewportClassName={"left-[-50px] top-[20px]"}>
           <NavigationMenuList className=" hidden md:flex items-center gap-14 text-menu font-onest ">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>VENUE FINDING</NavigationMenuTrigger>
+              <NavigationMenuTrigger motionProps={animationPopUp(0)}>
+                VENUE FINDING
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="bg-black w-[220px]">
                   {venues.map((component, i) => (
@@ -93,7 +106,9 @@ export default function Header({ className }: { className?: string }) {
         <NavigationMenu viewportClassName={"left-[-55px] top-[20px]"}>
           <NavigationMenuList className="hidden md:flex items-center gap-14 text-menu font-onest ">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>WHAT WE DO</NavigationMenuTrigger>
+              <NavigationMenuTrigger motionProps={animationPopUp(1)}>
+                WHAT WE DO
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="bg-black w-[220px]">
                   {whatWeDo.map((component, i) => (
@@ -111,18 +126,20 @@ export default function Header({ className }: { className?: string }) {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
-                OUR EVENTS
+                <motion.span {...animationPopUp(2)}>OUR EVENTS</motion.span>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink href="#" className="hover:text-primary-tan-0">
-                ABOUT US
+                <motion.span {...animationPopUp(3)}>ABOUT US </motion.span>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Button variant="medium" icon="contact" title="Contact us" />
 
+        <motion.div className="hidden md:flex" {...animationPopUp(4)}>
+          <Button variant="medium" icon="contact" title="Contact us" />
+        </motion.div>
         {/* <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
         <Menu size={24} />
       </button> */}
@@ -147,7 +164,16 @@ const ListItem: React.FC<{
         )}
         {...props}
       >
-        <div className="text-menu font-onest py-[17px]">{title}</div>
+        <motion.div
+          className="text-menu font-onest py-[17px]"
+          {...{
+            initial: { opacity: 0, y: -5 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          }}
+        >
+          {title}
+        </motion.div>
       </NavigationMenuLink>
     </li>
   );

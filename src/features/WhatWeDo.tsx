@@ -13,6 +13,7 @@ import { ScrollBar } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
 import { useLayoutEffect, useRef, useState } from "react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { motion } from "framer-motion";
 
 const sections = [
   { title: "VENUE SOURCING", image: venue },
@@ -67,7 +68,13 @@ export const WhatWeDo = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-6 max-w-[60%] my-16">
+      <motion.div
+        className="flex flex-col gap-6 max-w-[60%] my-16"
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, type: "tween" }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-h1 uppercase text-balance">
           Every successful event starts with the perfect venue
         </h1>
@@ -77,7 +84,7 @@ export const WhatWeDo = () => {
           venue solutions and full-service event management designed to meet
           your specific objectives.
         </p>
-      </div>
+      </motion.div>
       <ScrollArea
         className="overflow-hidden"
         ref={scrollAreaRef}

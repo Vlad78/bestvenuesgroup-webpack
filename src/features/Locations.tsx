@@ -1,7 +1,11 @@
+// "use client";
+
 import Image from "next/image";
 import newYorkPic from "@/shared/assets/pictures/new-yourk.jpg";
 import londonPic from "@/shared/assets/pictures/london.jpg";
 import { Button } from "@/shared/components/Button";
+
+// import { motion } from "framer-motion";
 
 const data = [
   {
@@ -37,7 +41,13 @@ export const Locations = () => {
         <h2 className="text-h1 cursor-default uppercase text-balance">
           {location.title}
         </h2>
-        <p className="text-body font-onest max-w-[65%] cursor-default text-balance">
+        <p
+          className="text-body font-onest max-w-[65%] cursor-default text-balance"
+          // initial={{ opacity: 0, y: 50 }}
+          // whileInView={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.1, type: "tween", delay: 1 }}
+          // viewport={{ once: true }}
+        >
           {location.description}
         </p>
         <Button
