@@ -11,7 +11,7 @@ export const Subscribe = () => {
         className="text-h4 text-white uppercase w-[60%] mr-auto select-none"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, type: "tween" }}
+        transition={{ duration: 1, type: "tween", delay: 0.5 }}
         viewport={{ once: true }}
       >
         Subscribe to our newsletter

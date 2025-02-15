@@ -10,7 +10,7 @@ export const ContactUs = () => {
         className="w-[55%] text-h3 uppercase select-none text-white "
         initial={{ opacity: 0, x: -150 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, type: "tween" }}
+        transition={{ duration: 1, type: "tween", delay: 0.5 }}
         viewport={{ once: true }}
       >
         Ready to learn how we can make your event exceptional?

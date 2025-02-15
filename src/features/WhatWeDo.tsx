@@ -6,6 +6,7 @@ import charity from "../shared/assets/pictures/whatWeDo/Charity galas.jpg";
 import corporate from "../shared/assets/pictures/whatWeDo/Corporate events.jpg";
 import parties from "../shared/assets/pictures/whatWeDo/Parties.jpg";
 import venue from "../shared/assets/pictures/whatWeDo/Venue Sourcing.jpg";
+import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.png";
 
 import Image from "next/image";
 
@@ -72,7 +73,7 @@ export const WhatWeDo = () => {
         className="flex flex-col gap-6 max-w-[60%] my-16"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, type: "tween" }}
+        transition={{ duration: 1, type: "tween", delay: 0.5 }}
         viewport={{ once: true }}
       >
         <h1 className="text-h1 uppercase text-balance">
@@ -119,6 +120,39 @@ export const WhatWeDo = () => {
         </div>
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
+      <div className="group flex relative h-[650px] overflow-hidden mt-8 px-12 py-18">
+        <Image
+          src={retreatsVilaVitaparc}
+          fill
+          alt={"retreats Vila Vitaparc"}
+          quality={100}
+          placeholder="blur"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+        <motion.div
+          className="relative z-2 flex-1 flex flex-col items-end justify-center gap-4 text-white mt-[246px] mb-[72px]"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, type: "tween", delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-h1 cursor-default uppercase">
+            Corporate retreats
+          </h2>
+          <p className="text-subheading2 font-onest max-w-[40%] cursor-default text-end">
+            Discover the best venues for company retreats with perfect settings
+            for team building and corporate strategy sessions.
+          </p>
+          <Button
+            className="mt-auto"
+            title={"Learn more"}
+            variant="medium"
+            icon="arrow-right"
+          />
+        </motion.div>
+      </div>
     </>
   );
 };
