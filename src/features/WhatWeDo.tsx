@@ -12,7 +12,7 @@ import Image from "next/image";
 
 import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../shared/lib/utils";
 
@@ -26,7 +26,7 @@ const sections = [
 ];
 
 export const WhatWeDo = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   const [width, setWidth] = useState<null | number>(null);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -177,8 +177,8 @@ export const WhatWeDo = () => {
           <ScrollArea
             className={cn("overflow-visible whitespace-nowrap ")}
             ref={scrollAreaRef}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            // onMouseEnter={() => setIsHovered(true)}
+            // onMouseLeave={() => setIsHovered(false)}
           >
             <div
               className="flex w-max space-x-4"
