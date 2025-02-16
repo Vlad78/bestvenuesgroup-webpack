@@ -10,14 +10,9 @@ import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.
 
 import Image from "next/image";
 
-// import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
+import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  ScrollArea,
-  ScrollAreaScrollbar,
-  ScrollAreaThumb,
-} from "@radix-ui/react-scroll-area";
 import { motion } from "framer-motion";
 import { cn } from "../shared/lib/utils";
 
@@ -35,7 +30,7 @@ export const WhatWeDo = () => {
   const [width, setWidth] = useState<null | number>(null);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef<number | null>(null); // Начальная позиция touch-события
+  // const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     // Проверяем, что код выполняется в браузере
@@ -63,98 +58,96 @@ export const WhatWeDo = () => {
         ? (width - 1312 - 16) / 2
         : 0
       : 0;
-  console.log(margin);
+  // console.log(margin);
 
-  useLayoutEffect(() => {
-    const scrollArea = scrollAreaRef.current;
+  // useLayoutEffect(() => {
+  //   const scrollArea = scrollAreaRef.current;
 
-    // console.log(scrollArea);
+  //   const handleWheel = (event: WheelEvent) => {
+  //     if (isHovered && scrollArea) {
+  //       event.preventDefault();
 
-    const handleWheel = (event: WheelEvent) => {
-      if (isHovered && scrollArea) {
-        event.preventDefault();
+  //       scrollArea.scrollBy({
+  //         left: event.deltaY * 4,
+  //         behavior: "smooth",
+  //       });
 
-        scrollArea.scrollBy({
-          left: event.deltaY * 4,
-          behavior: "smooth",
-        });
+  //       if (scrollArea.scrollLeft < 30 && event.deltaY < 0) {
+  //         document.documentElement.scrollBy({
+  //           top: event.deltaY * 3,
+  //           behavior: "smooth",
+  //         });
+  //       }
 
-        if (scrollArea.scrollLeft < 30 && event.deltaY < 0) {
-          document.documentElement.scrollBy({
-            top: event.deltaY * 3,
-            behavior: "smooth",
-          });
-        }
+  //       if (scrollArea.scrollLeft > 1920 && event.deltaY > 0) {
+  //         document.documentElement.scrollBy({
+  //           top: event.deltaY * 3,
+  //           behavior: "smooth",
+  //         });
+  //       }
+  //     }
+  //   };
 
-        if (scrollArea.scrollLeft > 1920 && event.deltaY > 0) {
-          document.documentElement.scrollBy({
-            top: event.deltaY * 3,
-            behavior: "smooth",
-          });
-        }
-      }
-    };
+  //   if (scrollArea) {
+  //     scrollArea.addEventListener("wheel", handleWheel, { passive: false });
+  //   }
 
-    if (scrollArea) {
-      scrollArea.addEventListener("wheel", handleWheel, { passive: false });
-    }
+  //   return () => {
+  //     if (scrollArea) {
+  //       scrollArea.removeEventListener("wheel", handleWheel);
+  //     }
+  //   };
+  // }, [isHovered]);
 
-    return () => {
-      if (scrollArea) {
-        scrollArea.removeEventListener("wheel", handleWheel);
-      }
-    };
-  }, [isHovered]);
+  // useLayoutEffect(() => {
+  //   const scrollArea = scrollAreaRef.current;
+  //   const handleTouchStart = (event: TouchEvent) => {
+  //     if (scrollArea && event.touches.length === 1) {
+  //       touchStartX.current = event.touches[0].clientX; // Запоминаем начальную позицию
+  //     }
+  //   };
 
-  useLayoutEffect(() => {
-    const scrollArea = scrollAreaRef.current;
-    const handleTouchStart = (event: TouchEvent) => {
-      if (scrollArea && event.touches.length === 1) {
-        touchStartX.current = event.touches[0].clientX; // Запоминаем начальную позицию
-      }
-    };
+  //   const handleTouchMove = (event: TouchEvent) => {
+  //     if (
+  //       scrollArea &&
+  //       touchStartX.current !== null &&
+  //       event.touches.length === 1
+  //     ) {
+  //       event.preventDefault(); // Предотвращаем стандартное поведение скролла
+  //       const touchMoveX = event.touches[0].clientX;
+  //       const deltaX = touchStartX.current - touchMoveX; // Вычисляем разницу
+  //       scrollArea.scrollBy({
+  //         left: deltaX,
+  //         behavior: "auto", // На iOS smooth может не работать, поэтому используем "auto"
+  //       });
+  //       touchStartX.current = touchMoveX; // Обновляем начальную позицию
+  //     }
+  //   };
 
-    const handleTouchMove = (event: TouchEvent) => {
-      if (
-        scrollArea &&
-        touchStartX.current !== null &&
-        event.touches.length === 1
-      ) {
-        event.preventDefault(); // Предотвращаем стандартное поведение скролла
-        const touchMoveX = event.touches[0].clientX;
-        const deltaX = touchStartX.current - touchMoveX; // Вычисляем разницу
-        scrollArea.scrollBy({
-          left: deltaX,
-          behavior: "auto", // На iOS smooth может не работать, поэтому используем "auto"
-        });
-        touchStartX.current = touchMoveX; // Обновляем начальную позицию
-      }
-    };
+  //   const handleTouchEnd = () => {
+  //     touchStartX.current = null; // Сбрасываем начальную позицию
+  //   };
 
-    const handleTouchEnd = () => {
-      touchStartX.current = null; // Сбрасываем начальную позицию
-    };
+  //   if (scrollArea) {
+  //     scrollArea.addEventListener("touchstart", handleTouchStart, {
+  //       passive: false,
+  //     });
+  //     scrollArea.addEventListener("touchmove", handleTouchMove, {
+  //       passive: false,
+  //     });
+  //     scrollArea.addEventListener("touchend", handleTouchEnd, {
+  //       passive: false,
+  //     });
+  //   }
 
-    if (scrollArea) {
-      scrollArea.addEventListener("touchstart", handleTouchStart, {
-        passive: false,
-      });
-      scrollArea.addEventListener("touchmove", handleTouchMove, {
-        passive: false,
-      });
-      scrollArea.addEventListener("touchend", handleTouchEnd, {
-        passive: false,
-      });
-    }
-
-    return () => {
-      if (scrollArea) {
-        scrollArea.removeEventListener("touchstart", handleTouchStart);
-        scrollArea.removeEventListener("touchmove", handleTouchMove);
-        scrollArea.removeEventListener("touchend", handleTouchEnd);
-      }
-    };
-  }, [isHovered]);
+  //   return () => {
+  //     if (scrollArea) {
+  //       scrollArea.removeEventListener("touchstart", handleTouchStart);
+  //       scrollArea.removeEventListener("touchmove", handleTouchMove);
+  //       scrollArea.removeEventListener("touchend", handleTouchEnd);
+  //     }
+  //   };
+  // }, [isHovered]);
 
   return (
     <>
@@ -179,17 +172,20 @@ export const WhatWeDo = () => {
           </motion.div>
         </section>
       </Wrapper>
-      <section className="w-full overflow-hidden h-[528px]">
+      <section className="overflow-visible w-full h-[528px]">
         {width && (
           <ScrollArea
-            className={cn("overflow-hidden whitespace-nowrap")}
+            className={cn("overflow-visible whitespace-nowrap ")}
             ref={scrollAreaRef}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div
               className="flex w-max space-x-4"
-              style={{ marginLeft: `${margin}px`, marginRight: `${margin}px` }}
+              style={{
+                marginLeft: `${margin}px`,
+                marginRight: `${margin}px`,
+              }}
             >
               {sections.map((section) => (
                 <figure
@@ -219,12 +215,15 @@ export const WhatWeDo = () => {
                 </figure>
               ))}
             </div>
-            <ScrollAreaScrollbar
+            <ScrollBar
               orientation="horizontal"
-              className="flex select-none touch-none p-1 bg-primary-tan-+1 w-60"
-            >
-              <ScrollAreaThumb className="flex-1 bg-primary-tan-+4 relative" />
-            </ScrollAreaScrollbar>
+              className="bg-gray-5 opacity-30 rounded-full"
+              style={{
+                marginLeft: `${margin}px`,
+                marginRight: `${margin}px`,
+                bottom: "-12px",
+              }}
+            />
           </ScrollArea>
         )}
       </section>
