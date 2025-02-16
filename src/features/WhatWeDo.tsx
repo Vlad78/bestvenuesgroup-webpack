@@ -12,7 +12,7 @@ import Image from "next/image";
 
 import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../shared/lib/utils";
 
