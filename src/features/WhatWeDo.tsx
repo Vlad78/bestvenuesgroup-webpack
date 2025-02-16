@@ -32,28 +32,38 @@ const sections = [
 
 export const WhatWeDo = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState<null | number>(null);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null); // Начальная позиция touch-события
 
   useEffect(() => {
-    const handleResize = () => {
+    // Проверяем, что код выполняется в браузере
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      // Устанавливаем начальное значение ширины
       setWidth(window.innerWidth);
-    };
 
-    // Добавляем слушатель события resize
-    window.addEventListener("resize", handleResize);
+      // Добавляем слушатель события resize
+      window.addEventListener("resize", handleResize);
 
-    // Убираем слушатель при размонтировании компонента
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      // Убираем слушатель при размонтировании компонента
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
-  const margin = (width - 1312 - 16) / 2;
-
-  console.log((width - 1312 - 16) / 2);
+  const margin =
+    width !== null
+      ? (width - 1312 - 16) / 2 > 0
+        ? (width - 1312 - 16) / 2
+        : 0
+      : 0;
+  console.log(margin);
 
   useLayoutEffect(() => {
     const scrollArea = scrollAreaRef.current;
@@ -169,52 +179,54 @@ export const WhatWeDo = () => {
           </motion.div>
         </section>
       </Wrapper>
-      <section className="w-full overflow-hidden">
-        <ScrollArea
-          className={cn("overflow-hidden whitespace-nowrap")}
-          ref={scrollAreaRef}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div
-            className="flex w-max space-x-4"
-            style={{ marginLeft: `${margin}px`, marginRight: `${margin}px` }}
+      <section className="w-full overflow-hidden h-[528px]">
+        {width && (
+          <ScrollArea
+            className={cn("overflow-hidden whitespace-nowrap")}
+            ref={scrollAreaRef}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            {sections.map((section) => (
-              <figure
-                key={section.title}
-                className="group relative flex flex-col justify-end w-[528px] h-[528px] overflow-hidden shrink-0"
-              >
-                <Image
-                  src={section.image}
-                  alt={section.title}
-                  fill
-                  quality={100}
-                  placeholder="blur"
-                  sizes="(max-width: 768px) 528px, (max-width: 1200px) 528px, 528px"
-                  className="object-cover z-[-1] transition-transform duration-300 ease-in-out group-hover:scale-[1.1]"
-                />
-
-                <div className="flex flex-col items-start gap-6 mb-16 mx-12">
-                  <h2 className="text-h3 text-white cursor-default text-balance">
-                    {section.title}
-                  </h2>
-                  <Button
-                    title="LEARN MORE"
-                    variant="small"
-                    icon="arrow-right"
+            <div
+              className="flex w-max space-x-4"
+              style={{ marginLeft: `${margin}px`, marginRight: `${margin}px` }}
+            >
+              {sections.map((section) => (
+                <figure
+                  key={section.title}
+                  className="group relative flex flex-col justify-end w-[528px] h-[528px] overflow-hidden shrink-0"
+                >
+                  <Image
+                    src={section.image}
+                    alt={section.title}
+                    fill
+                    quality={100}
+                    placeholder="blur"
+                    sizes="(max-width: 768px) 528px, (max-width: 1200px) 528px, 528px"
+                    className="object-cover z-[-1] transition-transform duration-300 ease-in-out group-hover:scale-[1.1]"
                   />
-                </div>
-              </figure>
-            ))}
-          </div>
-          <ScrollAreaScrollbar
-            orientation="horizontal"
-            className="flex select-none touch-none p-1 bg-primary-tan-+1 w-60"
-          >
-            <ScrollAreaThumb className="flex-1 bg-primary-tan-+4 relative" />
-          </ScrollAreaScrollbar>
-        </ScrollArea>
+
+                  <div className="flex flex-col items-start gap-6 mb-16 mx-12">
+                    <h2 className="text-h3 text-white cursor-default text-balance">
+                      {section.title}
+                    </h2>
+                    <Button
+                      title="LEARN MORE"
+                      variant="small"
+                      icon="arrow-right"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+            <ScrollAreaScrollbar
+              orientation="horizontal"
+              className="flex select-none touch-none p-1 bg-primary-tan-+1 w-60"
+            >
+              <ScrollAreaThumb className="flex-1 bg-primary-tan-+4 relative" />
+            </ScrollAreaScrollbar>
+          </ScrollArea>
+        )}
       </section>
       <Wrapper>
         <section>
