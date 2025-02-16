@@ -27,11 +27,12 @@ export default function Home() {
 
         <MovingLogos className="h-20 my-20" />
 
-        <Wrapper>
-          <section>
-            <WhatWeDo />
-          </section>
-        </Wrapper>
+        {/* <Wrapper> */}
+        {/* <section> */}
+        <WhatWeDo />
+        {/* </section> */}
+        {/* </Wrapper> */}
+
         <section>
           <Testimonials />
         </section>

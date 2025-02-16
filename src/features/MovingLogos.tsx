@@ -22,7 +22,7 @@ import Image from "next/image";
 
 export const MovingLogos = ({ className }: { className?: string }) => {
   return (
-    <Marquee className={cn(className)} autoFill pauseOnHover direction="left">
+    <Marquee className={cn(className)} autoFill direction="left">
       {logos.map((Component, index) =>
         typeof Component === "function" ? (
           <Component key={index} alt={`Logo ${index}`} className="mx-8" />
