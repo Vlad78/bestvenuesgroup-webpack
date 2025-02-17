@@ -92,11 +92,11 @@ export const WhatWeDo = () => {
               ))}
             </div>
           </div>
-          <ScrollBar
+          {/* <ScrollBar
             orientation="horizontal"
             className="bg-gray-5 opacity-30 rounded-full w-[1312px] mx-auto"
             style={{ bottom: "-12px" }}
-          />
+          /> */}
         </ScrollArea>
       </section>
       <Wrapper>
