@@ -10,7 +10,7 @@ import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.
 
 import Image from "next/image";
 
-import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
+import { ScrollArea } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
 import { useRef } from "react";
 import { motion } from "framer-motion";
