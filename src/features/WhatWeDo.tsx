@@ -64,7 +64,7 @@ export const WhatWeDo = () => {
                   className="group relative flex flex-col justify-end w-[528px] h-[528px] overflow-hidden shrink-0"
                   style={
                     i === sections.length - 1
-                      ? { marginRight: "calc((100vw - 1312px) / 2);" }
+                      ? { marginRight: "calc((100vw - 1312px) / 2 - 8px);" }
                       : {}
                   }
                 >
