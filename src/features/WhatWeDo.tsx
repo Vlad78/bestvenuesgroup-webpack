@@ -10,7 +10,7 @@ import retreatsVilaVitaparc from "@/shared/assets/pictures/RetreatsVilaVitaparc.
 
 import Image from "next/image";
 
-import { ScrollArea } from "../shared/components/ScrollArea";
+import { ScrollBar, ScrollArea } from "../shared/components/ScrollArea";
 import { Button } from "../shared/components/Button";
 import { useRef } from "react";
 import { motion } from "framer-motion";
@@ -92,11 +92,11 @@ export const WhatWeDo = () => {
               ))}
             </div>
           </div>
-          {/* <ScrollBar
+          <ScrollBar
             orientation="horizontal"
-            className="bg-gray-5 opacity-30 rounded-full w-[1312px] mx-auto"
+            className="bg-gray-5 rounded-full w-[1312px] mx-auto opacity-0"
             style={{ bottom: "-12px" }}
-          /> */}
+          />
         </ScrollArea>
       </section>
       <Wrapper>
